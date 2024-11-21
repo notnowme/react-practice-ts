@@ -1,0 +1,45 @@
+@use 'include-media' as im;
+@use 'utils';
+
+.SassComponent {
+    display: flex;
+    @include im.media('<768px') {
+        background: blueviolet;
+    }
+    .box {
+        background: red;
+        cursor: pointer;
+        transition: all 0.3s ease-in;
+        &.red {
+            background: utils.$red;
+            @include utils.square(1)
+        }
+        &.orange {
+            background: utils.$orange;
+            @include utils.square(2)
+        }
+        &.yellow {
+            background: utils.$yellow;
+            @include utils.square(3)
+        }
+        &.green {
+            background: utils.$green;
+            @include utils.square(4)
+        }
+        &.blue {
+            background: utils.$blue;
+            @include utils.square(5)
+        }
+        &.indigo {
+            background: utils.$indigo;
+            @include utils.square(6)
+        }
+        &.violet {
+            background: utils.$violet;
+            @include utils.square(7)
+        }
+        &:hover {
+            background: black;
+        }
+    }
+}
