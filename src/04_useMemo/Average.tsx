@@ -16,9 +16,9 @@ const Average = () => {
     }
 
     // 컴포넌트가 처음 생성될 때만 함수를 생성
-    const onChangeUseCallback = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
-        setNumber(e.target.value);
-    },[]);
+    // const onChangeUseCallback = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
+    //     setNumber(e.target.value);
+    // },[]);
 
     const onInsert = () => {
        const inputNumber = parseInt(number);
@@ -33,21 +33,25 @@ const Average = () => {
     // []로 했을 경우 처음 생성됐을 상황을 기억하기 때문에
     // number나, list는 0 그리고 []이 된다.
     // 그래서 의존성 배열에 상태 값을 넣어줘야 한다.
-    const onInsertUseCallback = useCallback(() => {
-        const inputNumber = parseInt(number);
-       if(isNaN(inputNumber)) return;
-       const nextList = list.concat(inputNumber);
-       setList(nextList);
-       setNumber('');
-    }, [number, list]);
+    // const onInsertUseCallback = useCallback(() => {
+    //     const inputNumber = parseInt(number);
+    //    if(isNaN(inputNumber)) return;
+    //    const nextList = list.concat(inputNumber);
+    //    setList(nextList);
+    //    setNumber('');
+    // }, [number, list]);
 
     const avg = useMemo(() => {
         return getAverage(list);
     }, [list]);
     return (
         <div>
-            <input type="text" value={number} onChange={onChangeUseCallback}/>
-            <button onClick={onInsertUseCallback} >등록</button>
+            <input type="text" value={number} onChange={onChnage} onKeyDown={(e) => {
+                if(e.key === 'Enter') {
+                    onInsert();
+                }
+            }}/>
+            <button onClick={onInsert} >등록</button>
             <ul>
                 {
                     list.map((value, index) => (
@@ -56,8 +60,8 @@ const Average = () => {
                 }
             </ul>
             <div>
-                {/* <p>평균 값: </p> {getAverage(list)} */}
-                <p>평균 값: </p> {avg}
+                <p>평균 값: </p> {getAverage(list)}
+                {/* <p>평균 값: </p> {avg} */}
             </div>
         </div>
     )

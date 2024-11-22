@@ -20,6 +20,7 @@ import { ThemeContext } from './useContext/themeContext'
 import Page from './useContext/Page'
 import { CounterCompound } from './compound/Counter'
 import CounterNormal from './compound/CounterNormal'
+import ErrorBoundary from './02_useEffect/ErrorBoundary'
 function App() {
 
   const [view, setView] = useState(true);
@@ -41,7 +42,9 @@ function App() {
     {/* useEffect */}
 
     {/* useReducer */}
-    {/* <CounterUseReducer /> */}
+    <ErrorBoundary>
+      <CounterUseReducer />
+    </ErrorBoundary>
     {/* <InfoUseReducer /> */}
     {/* useReducer */}
 
@@ -73,7 +76,7 @@ function App() {
       <Page />
     </ThemeContext.Provider> */}
 
-    <CounterCompound initValue={0} maxNum={100} minNum={0}>
+    {/* <CounterCompound initValue={0} maxNum={100} minNum={0}>
       <CounterCompound.Button type='INCREMENT'>
         ++
       </CounterCompound.Button>
@@ -84,7 +87,7 @@ function App() {
       <CounterCompound.Button type='DECREMENT'>
         --
       </CounterCompound.Button>
-    </CounterCompound>
+    </CounterCompound> */}
 
     {/* <CounterNormal
       title='타이틀'
