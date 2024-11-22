@@ -20,9 +20,6 @@ const FlushSync = () => {
         setInput(e.target.value);
     },[]);
 
-    useEffect(() => {
-        console.log(todos);
-    },[todos]);
     const handleAdd = () => {
         flushSync(() => {
             setTodos(prev => {

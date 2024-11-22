@@ -7,37 +7,38 @@ const Debounce = () => {
     const [data, setData] = useState([]);
     const debounceValue = useDebounce(search);
 
-    useEffect(() => {
-        const getData = async() => {
-            return await fetch(`https://restcountries.com/v3.1/name/${debounceValue}`).then(res => {
-                if(!res.ok) {
-                    return Promise.reject('No Data');
-                }
-                return res.json();
-            }).then(list => {
-                console.log(list[0].name.official);
-                setData(list);
-            }).catch(err => console.error(err));
-        }
-        if(debounceValue) getData();
-    },[debounceValue]);
-
     // useEffect(() => {
     //     const getData = async() => {
-    //         try {
-    //             const res = await fetch(`https://restcountries.com/v3.1/name/${search}`);
+    //         return await fetch(`https://restcountries.com/v3.1/name/${debounceValue}`).then(res => {
     //             if(!res.ok) {
-    //                 return 'No Data';
+    //                 return Promise.reject('No Data');
     //             }
-    //             const result = await res.json();
-    //             console.log(result);
-    //             setData(result);
-    //         } catch (err) {
-    //             console.error('ERROR!');
-    //         }
+    //             return res.json();
+    //         }).then(list => {
+    //             console.log(list[0].name.official);
+    //             setData(list);
+    //         }).catch(err => console.error(err));
     //     }
-    //     if(search) getData();
-    // },[search])
+    //     if(debounceValue) getData();
+    // },[debounceValue]);
+
+    useEffect(() => {
+        const getData = async() => {
+            try {
+                const res = await fetch(`https://restcountries.com/v3.1/name/${search}`);
+                if(!res.ok) {
+                    return 'No Data';
+                }
+                const result = await res.json();
+                console.log(result);
+                setData(result);
+            } catch (err) {
+                console.error('ERROR!');
+            }
+        }
+        if(search) getData();
+    },[search])
+    
     return (
         <div>
             <input type="text" onChange={(e) => setSearch(e.target.value)} name="" id="" />

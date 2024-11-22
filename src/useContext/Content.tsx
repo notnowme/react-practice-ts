@@ -8,7 +8,7 @@ const Content = () => {
             className="content"
             style={{
                 backgroundColor: isDark ? 'black' : 'white',
-                color: isDark ? 'white' : 'dark',
+                color: isDark ? 'white' : 'black',
             }}
         >
             <p>content...</p>
