@@ -1,22 +1,32 @@
 import { Component, ErrorInfo } from "react";
+import ErrorComponent from "./ErrorComponent";
 
 interface Props {
     children: React.ReactNode;
 }
 
-class ErrorBoundary extends Component<Props> {
+interface States {
+    hasError: boolean;
+    error: Error | null;
+}
 
-    state = {
-        error: false,
+class ErrorBoundary extends Component<Props, States> {
+
+    state: States = {
+        hasError: false,
+        error: null,
     }
     componentDidCatch(error: Error, errorInfo: ErrorInfo): void {
         this.setState({
-            error: true,
+            hasError: true,
+            error: error,
         });
         console.error({error, errorInfo});
     }
     render() {
-        if (this.state.error) return <div>에러가 발생했습니다.</div>
+        if (this.state.hasError) {
+            return <ErrorComponent error={this.state.error}/>;
+        }
         return this.props.children;
     }
 }

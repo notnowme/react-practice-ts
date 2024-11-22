@@ -21,6 +21,7 @@ import Page from './useContext/Page'
 import { CounterCompound } from './compound/Counter'
 import CounterNormal from './compound/CounterNormal'
 import ErrorBoundary from './02_useEffect/ErrorBoundary'
+import ErrorComponent from './02_useEffect/ErrorComponent'
 function App() {
 
   const [view, setView] = useState(true);
@@ -30,51 +31,73 @@ function App() {
   return (
     <>
     {/* useState */}
+
     {/* <CounterUseState /> */}
     {/* <InfoUseState /> */}
     {/* <FlushSync /> */}
+
     {/* useState */}
 
     {/* useEffect */}
-    {/* {view && <InfoUseEffect />}
-    <button onClick={() => setView(prev => !prev)}>{view ? '보기' : '숨기기'}</button> */}
+
+    {view && <InfoUseEffect />}
+    <button onClick={() => setView(prev => !prev)}>{view ? '보기' : '숨기기'}</button>
     {/* <LayoutEffect /> */}
+
     {/* useEffect */}
 
     {/* useReducer */}
-    <ErrorBoundary>
+
+    {/* <ErrorBoundary>
       <CounterUseReducer />
-    </ErrorBoundary>
+    </ErrorBoundary> */}
     {/* <InfoUseReducer /> */}
+
     {/* useReducer */}
 
     {/* useMemo */}
+
     {/* <AverageUseMemoCallback /> */}
+
     {/* useMemo */}
 
     {/* useRef */}
+
     {/* <AverageUseRef /> */}
     {/* <RefSample /> */}
+
     {/* useRef */}
 
     {/* custom hooks */}
+
     {/* <InfoCustom /> */}
     {/* <Debounce /> */}
+
     {/* custom hooks */}
 
     {/* useTransition */}
+
     {/* <TransitionSample /> */}
+
     {/* useTransition */}
 
     {/* CSS */}
+
     {/* <SassComponent /> */}
     {/* <CSSModule /> */}
     {/* <StyledComponent /> */}
+
     {/* CSS */}
+    
+    {/* useContext */}
     
     {/* <ThemeContext.Provider value={{isDark, setIsDark}}>
       <Page />
     </ThemeContext.Provider> */}
+
+    {/* useContext */}
+
+    {/* 합성 컴포넌트 */}
 
     {/* <CounterCompound initValue={0} maxNum={100} minNum={0}>
       <CounterCompound.Button type='INCREMENT'>
@@ -95,6 +118,8 @@ function App() {
       minNum={0}
       maxNum={100}
     /> */}
+
+    {/* 합성 컴포넌트 */}
     </>
   )
 }

@@ -24,13 +24,14 @@ const Info = () => {
 
     useEffect(() => {
         return () => {
-            console.log('unmount and update, clean up');
+            console.log('언마운트 혹은 업데이트 될 때 매번 실행됩니다.');
         }
     });
+
     useEffect(() => {
         return () => {
             // 등록돼 있던 이벤트를 해제할 때 주로 많이 사용됩니다.
-            console.log('unmount clean up.');
+            console.log('언마운트될 때 한 번 실행됩니다.');
         }
     },[]);
 
